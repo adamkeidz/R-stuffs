@@ -1,0 +1,440 @@
+library(ggplot2)
+library(lubridate)
+library(dplyr)
+
+a <- read.csv("../activepowertotal.csv", col.names = c("DevID","DaTime","Pow"))
+
+Date <- format(as.POSIXct(strptime(a$DaTime,"%Y-%m-%d %H:%M:%S",tz = "")) ,format = "%Y-%m-%d")
+a$Date <- Date
+Time <- format(as.POSIXct(strptime(a$DaTime,"%Y-%m-%d %H:%M:%S",tz = "")) ,format = "%H:%M:%S")
+a$Time <- Time
+a$Day <- as.Date(a$Date)
+a$Day = format(a$Date, format = "%A")
+a$Day <- wday(a$Date, label = TRUE, abbr = FALSE)
+Date2 <- format(as.POSIXct(strptime(a$DaTime,"%Y-%m-%d %H:%M:%S",tz = "")) ,format = "%d/%m")
+a$Date2 <- Date2
+Date3 <- format(as.POSIXct(strptime(a$DaTime,"%Y-%m-%d %H:%M:%S",tz = "")) ,format = "%d")
+a$Date3 <- Date3
+Month <- format(as.POSIXct(strptime(a$DaTime,"%Y-%m-%d %H:%M:%S",tz = "")) ,format = "%m")
+a$Month <- Month
+a$Month <- factor(a$Month, levels = c("08","09"), labels = c("August","September"))
+
+aug <- a[a$Month%in%c("August"),]
+
+sept <- a[a$Month%in%c("September"),]
+
+id_1 <- a[a$DevID%in%c("1"),]
+id_2 <- a[a$DevID%in%c("2"),]
+id_3 <- a[a$DevID%in%c("3"),]
+id_4 <- a[a$DevID%in%c("4"),]
+id_5 <- a[a$DevID%in%c("5"),]
+id_6 <- a[a$DevID%in%c("6"),]
+id_7 <- a[a$DevID%in%c("7"),]
+id_8 <- a[a$DevID%in%c("8"),]
+id_9 <- a[a$DevID%in%c("9"),]
+id_10 <- a[a$DevID%in%c("10"),]
+id_11 <- a[a$DevID%in%c("11"),]
+id_12 <- a[a$DevID%in%c("12"),]
+id_13 <- a[a$DevID%in%c("13"),]
+id_14 <- a[a$DevID%in%c("14"),]
+id_15 <- a[a$DevID%in%c("15"),]
+id_15 <- a[a$DevID%in%c("16"),]
+id_15 <- a[a$DevID%in%c("15"),]
+id_16 <- a[a$DevID%in%c("16"),]
+id_17 <- a[a$DevID%in%c("17"),]
+id_18 <- a[a$DevID%in%c("18"),]
+id_19 <- a[a$DevID%in%c("19"),]
+id_20 <- a[a$DevID%in%c("20"),]
+id_21 <- a[a$DevID%in%c("21"),]
+id_22 <- a[a$DevID%in%c("22"),]
+id_23 <- a[a$DevID%in%c("23"),]
+id_24 <- a[a$DevID%in%c("24"),]
+id_25 <- a[a$DevID%in%c("25"),]
+id_26 <- a[a$DevID%in%c("26"),]
+id_27 <- a[a$DevID%in%c("27"),]
+id_28 <- a[a$DevID%in%c("28"),]
+
+aug1 <- subset(aug,aug$DevID ==1)
+aug2 <- subset(aug,aug$DevID ==2)
+aug3 <- subset(aug,aug$DevID ==3)
+aug4 <- subset(aug,aug$DevID ==4)
+aug5 <- subset(aug,aug$DevID ==5)
+aug6 <- subset(aug,aug$DevID ==6)
+aug7 <- subset(aug,aug$DevID ==7)
+aug8 <- subset(aug,aug$DevID ==8)
+aug9 <- subset(aug,aug$DevID ==9)
+aug10 <- subset(aug,aug$DevID ==10)
+aug11 <- subset(aug,aug$DevID ==11)
+aug12 <- subset(aug,aug$DevID ==12)
+aug13 <- subset(aug,aug$DevID ==13)
+aug14 <- subset(aug,aug$DevID ==14)
+aug15 <- subset(aug,aug$DevID ==15)
+aug15 <- subset(aug,aug$DevID ==16)
+aug15 <- subset(aug,aug$DevID ==15)
+aug16 <- subset(aug,aug$DevID ==16)
+aug17 <- subset(aug,aug$DevID ==17)
+aug18 <- subset(aug,aug$DevID ==18)
+aug19 <- subset(aug,aug$DevID ==19)
+aug20 <- subset(aug,aug$DevID ==20)
+aug21 <- subset(aug,aug$DevID ==21)
+aug22 <- subset(aug,aug$DevID ==22)
+aug23 <- subset(aug,aug$DevID ==23)
+aug24 <- subset(aug,aug$DevID ==24)
+aug25 <- subset(aug,aug$DevID ==25)
+aug26 <- subset(aug,aug$DevID ==26)
+aug27 <- subset(aug,aug$DevID ==27)
+aug28 <- subset(aug,aug$DevID ==28)
+
+sept1 <- subset(sept,sept$DevID ==1)
+sept2 <- subset(sept,sept$DevID ==2)
+sept3 <- subset(sept,sept$DevID ==3)
+sept4 <- subset(sept,sept$DevID ==4)
+sept5 <- subset(sept,sept$DevID ==5)
+sept6 <- subset(sept,sept$DevID ==6)
+sept7 <- subset(sept,sept$DevID ==7)
+sept8 <- subset(sept,sept$DevID ==8)
+sept9 <- subset(sept,sept$DevID ==9)
+sept10 <- subset(sept,sept$DevID ==10)
+sept11 <- subset(sept,sept$DevID ==11)
+sept12 <- subset(sept,sept$DevID ==12)
+sept13 <- subset(sept,sept$DevID ==13)
+sept14 <- subset(sept,sept$DevID ==14)
+sept15 <- subset(sept,sept$DevID ==15)
+sept15 <- subset(sept,sept$DevID ==16)
+sept15 <- subset(sept,sept$DevID ==15)
+sept16 <- subset(sept,sept$DevID ==16)
+sept17 <- subset(sept,sept$DevID ==17)
+sept18 <- subset(sept,sept$DevID ==18)
+sept19 <- subset(sept,sept$DevID ==19)
+sept20 <- subset(sept,sept$DevID ==20)
+sept21 <- subset(sept,sept$DevID ==21)
+sept22 <- subset(sept,sept$DevID ==22)
+sept23 <- subset(sept,sept$DevID ==23)
+sept24 <- subset(sept,sept$DevID ==24)
+sept25 <- subset(sept,sept$DevID ==25)
+sept26 <- subset(sept,sept$DevID ==26)
+sept27 <- subset(sept,sept$DevID ==27)
+sept28 <- subset(sept,sept$DevID ==28)
+greet <- 1000
+while (greet != 0){
+  greet <- readline(prompt = "Hello, press 1 if want to see graph of Power vs Device in a month, press 2 if want to see minimum and 3 if to see maximum. Also enter 0 if no want use anymore :(	Enter here:	")
+  if (greet == 1){
+    wh <- readline(prompt = "which id? ")
+    if (wh == 1){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug1,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 1 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept1,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 1 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    }else if (wh == 2){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug2,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 2 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept2,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 2 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+      
+    }else if (wh == 3){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug3,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 3 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept3,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 3 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 4){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug4,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 4 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept4,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 4 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 5){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug5,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 5 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept5,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 5 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 6){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug6,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 6 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd ==1){
+        print(ggplot(sept6,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 6 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 7){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug7,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 7 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept7,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 7 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } 
+    } else if (wh == 8){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug8,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 8 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept8,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 8 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 9){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug9,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 9 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept9,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 9 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 10){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug10,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 10 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept10,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 10 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 11){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug11,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 11 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept11,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 11 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 12){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug12,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 12 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept12,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 12 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 13){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug13,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 13 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept13,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 13 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 14){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug14,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 14 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept14,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 14 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 15){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug15,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 15 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept15,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 15 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 16){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug16,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 16 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept16,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 16 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 17){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug17,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 17 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept17,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 17 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 18){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug18,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 18 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept18,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 18 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 19){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug19,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 19 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept19,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 19 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 20){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug20,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 20 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept20,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 20 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 21){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug21,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 21 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept21,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 21 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 22){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug22,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 22 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept22,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 22 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 23){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug23,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 23 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept23,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 23 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 24){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug24,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 24 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept24,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 24 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 25){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug25,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 25 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept25,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 25 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 26){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug26,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 26 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept26,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 26 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 27){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug27,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 27 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept27,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 27 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } else if (wh == 28){
+      whd <- readline(prompt = "On which month?  August = 0, September = 1. Your answer here: ")
+      if (whd == 0 ){
+        print(ggplot(aug28,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 28 during August",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      } else if (whd == 1 ){
+        print(ggplot(sept28,aes(Day,Pow)) + geom_point(aes(color=(Day)))+ ggtitle("Power measured of Device 28 during September",subtitle = "By day") + ylab("Power measured") + theme(axis.text.x = element_text(angle=45, vjust=0.6)) + theme(axis.text.y = element_text(angle=30)))
+      }
+    } 
+  } else if (greet == 2){
+    mn <- readline(prompt = "Which device ya? Type it here:	")
+    if (mn == 1){
+      print(min(id_1$Pow))
+    } else if (mn == 2){
+      print(min(id_2$Pow))
+    } else if (mn == 3){
+      print(min(id_3$Pow))
+    } else if (mn == 4){
+      print(min(id_4$Pow))
+    } else if (mn == 5){
+      print(min(id_5$Pow))
+    } else if (mn == 6){
+      print(min(id_6$Pow))
+    } else if (mn == 7){
+      print(min(id_7$Pow))
+    } else if (mn == 8){
+      print(min(id_8$Pow))
+    } else if (mn == 9){
+      print(min(id_9$Pow))
+    } else if (mn == 10){
+      print(min(id_10$Pow))
+    } else if (mn == 11){
+      print(min(id_11$Pow))
+    } else if (mn == 12){
+      print(min(id_12$Pow))
+    } else if (mn == 13){
+      print(min(id_13$Pow))
+    } else if (mn == 14){
+      print(min(id_14$Pow))
+    } else if (mn == 15){
+      print(min(id_15$Pow))
+    } else if (mn == 16){
+      print(min(id_16$Pow))
+    } else if (mn == 17){
+      print(min(id_17$Pow))
+    } else if (mn == 18){
+      print(min(id_18$Pow))
+    } else if (mn == 19){
+      print(min(id_19$Pow))
+    } else if (mn == 20){
+      print(min(id_20$Pow))
+    } else if (mn == 21){
+      print(min(id_21$Pow))
+    } else if (mn == 22){
+      print(min(id_22$Pow))
+    } else if (mn == 23){
+      print(min(id_23$Pow))
+    } else if (mn == 24){
+      print(min(id_24$Pow))
+    } else if (mn == 25){
+      print(min(id_25$Pow))
+    } else if (mn == 26){
+      print(min(id_26$Pow))
+    } else if (mn == 27){
+      print(min(id_27$Pow))
+    } else if (mn == 28){
+      print(min(id_28$Pow))
+    } 
+  } else if (greet == 3) {
+    mx <- readline(prompt = "Which device ya? Type it here:	")
+    if (mx == 1){
+      print(max(id_1$Pow))
+    } else if (mx == 2){
+      print(max(id_2$Pow))
+    } else if (mx == 3){
+      print(max(id_3$Pow))
+    } else if (mx == 4){
+      print(max(id_4$Pow))
+    } else if (mx == 5){
+      print(max(id_5$Pow))
+    } else if (mx == 6){
+      print(max(id_6$Pow))
+    } else if (mx == 7){
+      print(max(id_7$Pow))
+    } else if (mx == 8){
+      print(max(id_8$Pow))
+    } else if (mx == 9){
+      print(max(id_9$Pow))
+    } else if (mx == 10){
+      print(max(id_10$Pow))
+    } else if (mx == 11){
+      print(max(id_11$Pow))
+    } else if (mx == 12){
+      print(max(id_12$Pow))
+    } else if (mx == 13){
+      print(max(id_13$Pow))
+    } else if (mx == 14){
+      print(max(id_14$Pow))
+    } else if (mx == 15){
+      print(max(id_15$Pow))
+    } else if (mx == 16){
+      print(max(id_16$Pow))
+    } else if (mx == 17){
+      print(max(id_17$Pow))
+    } else if (mx == 18){
+      print(max(id_18$Pow))
+    } else if (mx == 19){
+      print(max(id_19$Pow))
+    } else if (mx == 20){
+      print(max(id_20$Pow))
+    } else if (mx == 21){
+      print(max(id_21$Pow))
+    } else if (mx == 22){
+      print(max(id_22$Pow))
+    } else if (mx == 23){
+      print(max(id_23$Pow))
+    } else if (mx == 24){
+      print(max(id_24$Pow))
+    } else if (mx == 25){
+      print(max(id_25$Pow))
+    } else if (mx == 26){
+      print(max(id_26$Pow))
+    } else if (mx == 27){
+      print(max(id_27$Pow))
+    } else if (mx == 28){
+      print(max(id_28$Pow))
+    } 
+  }
+}
