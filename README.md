@@ -42,10 +42,10 @@ To run this project, you need to have the following software installed:
 
 2. You will be prompted with options to view graphs and perform calculations:
 
-- Enter 1 to see a graph of Power vs. Device in a specific month.
-- Enter 2 to see the minimum power value in the dataset.
-- Enter 3 to see the maximum power value in the dataset.
-- Enter 0 to exit the program.
+   - Enter 1 to see a graph of Power vs. Device in a specific month.
+   - Enter 2 to see the minimum power value in the dataset.
+   - Enter 3 to see the maximum power value in the dataset.
+   - Enter 0 to exit the program.
 3. Follow the prompts to input the Device ID and the month (August or September) for graph visualization.
 
 4. The graphs will be displayed using ggplot2, and the minimum/maximum power values will be printed to the console.
@@ -56,6 +56,8 @@ To run this project, you need to have the following software installed:
 
 1. The project files are organized as follows:
 
- - power_analysis.R: The refactored R code for data analysis and graph generation.
- - activepowertotal.csv: The input CSV file containing power data. (Available here https://bit.ly/R-adamkeidz)
- - README.md: This README file.
+   - power_analysis.R: The refactored R code for data analysis and graph generation.
+   
+   - activepowertotal.csv: The input CSV file containing power data. (Available here https://bit.ly/R-adamkeidz)
+   
+   - README.md: This README file.
