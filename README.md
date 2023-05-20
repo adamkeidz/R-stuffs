@@ -9,7 +9,6 @@ This project involves analyzing power data from a CSV file and generating graphs
 - [Installation](#installation)
 - [Usage](#usage)
 - [File Structure](#file-structure)
-- [License](#license)
 
 ## Introduction
 
