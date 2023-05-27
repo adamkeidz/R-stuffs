@@ -61,3 +61,5 @@ To run this project, you need to have the following software installed:
    - activepowertotal.csv: The input CSV file containing power data. (Available here https://bit.ly/R-adamkeidz)
    
    - README.md: This README file.
+
+---
